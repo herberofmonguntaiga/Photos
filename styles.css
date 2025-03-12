@@ -1,47 +1,31 @@
-/* Set the background image to fill the screen */
+/* Full-screen background container */
 .background-container {
     position: relative;
     width: 100%;
     height: 100vh; /* Full viewport height */
 }
 
+/* Background image */
 .background-image {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Cover the entire screen */
+    object-fit: cover; /* Makes sure the background image covers the whole screen */
 }
 
-/* Container for smaller images using grid layout */
-.image-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 columns */
-    grid-gap: 20px; /* Space between the images */
-    justify-items: center; /* Center the images within their grid cells */
-    align-items: center; /* Center images vertically in each grid cell */
-    padding: 20px;
-}
-
-/* Style for the 16 overlay images */
+/* Style for the smaller overlay images */
 .overlay-image {
-    width: 100%; /* Make the image take up the full width of the grid cell */
-    height: auto; /* Maintain the original aspect ratio */
-    max-width: 200px; /* You can adjust this width as needed */
+    position: absolute; /* Allows positioning images manually */
     cursor: pointer;
-    transition: transform 0.3s ease; /* Smooth hover effect */
-    object-fit: contain; /* Ensure the image's aspect ratio is retained */
+    transition: transform 0.3s ease; /* Smooth transition on hover */
+    object-fit: contain; /* Keeps the original aspect ratio */
 }
 
-/* Hover effect for overlay images */
+/* Hover effect for images */
 .overlay-image:hover {
-    transform: scale(1.1); /* Slightly enlarge on hover */
+    transform: scale(1.1); /* Slightly enlarge images on hover */
 }
 
-/* Popup styling for the large image view */
+/* Popup styling for larger image */
 .popup {
     display: none; /* Hidden by default */
     position: fixed;
@@ -59,4 +43,140 @@
     max-width: 90%;
     max-height: 90%;
     object-fit: contain;
+}
+
+/* Position the images manually with viewport units (vh/vw) for responsiveness */
+#image1 {
+    top: 5vh;
+    left: 5vw;
+}
+
+#image2 {
+    top: 10vh;
+    left: 25vw;
+}
+
+#image3 {
+    top: 20vh;
+    left: 40vw;
+}
+
+#image4 {
+    top: 40vh;
+    left: 10vw;
+}
+
+#image5 {
+    top: 20vh;
+    left: 60vw;
+}
+
+#image6 {
+    top: 60vh;
+    left: 20vw;
+}
+
+#image7 {
+    top: 30vh;
+    left: 70vw;
+}
+
+#image8 {
+    top: 50vh;
+    left: 30vw;
+}
+
+#image9 {
+    top: 80vh;
+    left: 40vw;
+}
+
+#image10 {
+    top: 10vh;
+    left: 70vw;
+}
+
+#image11 {
+    top: 70vh;
+    left: 50vw;
+}
+
+#image12 {
+    top: 40vh;
+    left: 50vw;
+}
+
+#image13 {
+    top: 30vh;
+    left: 10vw;
+}
+
+#image14 {
+    top: 50vh;
+    left: 80vw;
+}
+
+#image15 {
+    top: 60vh;
+    left: 5vw;
+}
+
+#image16 {
+    top: 90vh;
+    left: 70vw;
+}
+
+/* For smaller screens (e.g., mobile devices) */
+@media (max-width: 600px) {
+    .overlay-image {
+        max-width: 100px; /* Reduce image size for mobile */
+        max-height: 100px;
+    }
+
+    #image1 {
+        top: 10vh;
+        left: 10vw;
+    }
+
+    #image2 {
+        top: 20vh;
+        left: 20vw;
+    }
+
+    #image3 {
+        top: 30vh;
+        left: 10vw;
+    }
+
+    #image4 {
+        top: 40vh;
+        left: 60vw;
+    }
+
+    /* Adjust positions for the rest of the images similarly... */
+}
+
+/* For larger screens (tablets, desktops) */
+@media (min-width: 600px) {
+    .overlay-image {
+        max-width: 200px; /* Larger image size for tablets and desktops */
+        max-height: 200px;
+    }
+
+    #image1 {
+        top: 5vh;
+        left: 5vw;
+    }
+
+    #image2 {
+        top: 10vh;
+        left: 25vw;
+    }
+
+    #image3 {
+        top: 20vh;
+        left: 40vw;
+    }
+
+    /* Continue positioning for larger screens */
 }
