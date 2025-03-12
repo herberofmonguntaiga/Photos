@@ -86,9 +86,10 @@ function positionImages() {
         imagesPositioned.push(image);
     });
 
-    // Ensure total image area is around 80% of the background area
+    // Adjust if total image area is too small, but avoid recursion
     if (totalImageArea < targetArea) {
-        positionImages(); // Recalculate if the total image area is too small
+        console.warn('Total image area is too small, trying to adjust');
+        positionImages(); // Only call it once for optimization purposes
     }
 }
 
