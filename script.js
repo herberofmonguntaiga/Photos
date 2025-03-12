@@ -6,7 +6,7 @@ const imageIds = [
 
 // Image dimensions (width and height) as specified
 const imageDimensions = {
-    'image1': { width: 454, height: 268 },
+    'image1': { width: 454, height: 268.31 },
     'image2': { width: 439, height: 265.66 },
     'image3': { width: 370, height: 227.54 },
     'image4': { width: 476, height: 288.06 },
@@ -17,7 +17,7 @@ const imageDimensions = {
     'image9': { width: 414.73, height: 236.95 },
     'image10': { width: 266, height: 434.34 },
     'image11': { width: 280.09, height: 166.21 },
-    'image12': { width: 522.4, height: 294.94 },
+    'image12': { width: 522.40, height: 294.94 },
     'image13': { width: 444.63, height: 262.61 },
     'image14': { width: 483.29, height: 315.28 },
     'image15': { width: 410.60, height: 252.10 }
@@ -32,9 +32,9 @@ function getRandomPosition(imageId) {
     const imageWidth = imageDimensions[imageId].width;
     const imageHeight = imageDimensions[imageId].height;
 
-    // Generate random coordinates
-    const x = Math.random() * (containerWidth - imageWidth - 20) + 10; // Between 10px and containerWidth - imageWidth - 10px
-    const y = Math.random() * (containerHeight - imageHeight - 20) + 10; // Between 10px and containerHeight - imageHeight - 10px
+    // Ensure images are placed with a 10px margin and don't overflow
+    const x = Math.random() * (containerWidth - imageWidth - 20) + 10;
+    const y = Math.random() * (containerHeight - imageHeight - 20) + 10;
     
     return { x, y };
 }
@@ -51,3 +51,4 @@ function positionImages() {
 
 // Call positionImages when the page loads
 window.onload = positionImages;
+
