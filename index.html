@@ -3,37 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Website</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to the updated CSS -->
+    <title>Random Image Placement</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="background-container">
         <!-- Background Image -->
         <img src="backgroundforportfolio.jpg" alt="Background Image" class="background-image">
 
-        <!-- 16 smaller images (use absolute positioning to place them manually) -->
-        <img src="img008-2.jpg" alt="Image 1" class="overlay-image" id="image1" onclick="openImage(this.src)">
-        <img src="img004.jpg" alt="Image 2" class="overlay-image" id="image2" onclick="openImage(this.src)">
-        <img src="img010-2.jpg" alt="Image 3" class="overlay-image" id="image3" onclick="openImage(this.src)">
-        <img src="img002.jpg" alt="Image 4" class="overlay-image" id="image4" onclick="openImage(this.src)">
-        <img src="img006.jpg" alt="Image 5" class="overlay-image" id="image5" onclick="openImage(this.src)">
-        <img src="img012.jpg" alt="Image 6" class="overlay-image" id="image6" onclick="openImage(this.src)">
-        <img src="img018.jpg" alt="Image 7" class="overlay-image" id="image7" onclick="openImage(this.src)">
-        <img src="img018-2.jpg" alt="Image 8" class="overlay-image" id="image8" onclick="openImage(this.src)">
-        <img src="img019.jpg" alt="Image 9" class="overlay-image" id="image9" onclick="openImage(this.src)">
-        <img src="img019-2.jpg" alt="Image 10" class="overlay-image" id="image10" onclick="openImage(this.src)">
-        <img src="img010.jpg" alt="Image 11" class="overlay-image" id="image11" onclick="openImage(this.src)">
-        <img src="img008.jpg" alt="Image 12" class="overlay-image" id="image12" onclick="openImage(this.src)">
-        <img src="img007.jpg" alt="Image 13" class="overlay-image" id="image13" onclick="openImage(this.src)">
-        <img src="img024.jpg" alt="Image 14" class="overlay-image" id="image14" onclick="openImage(this.src)">
-        <img src="img003.jpg" alt="Image 15" class="overlay-image" id="image15" onclick="openImage(this.src)">
+        <!-- 16 smaller images (will be positioned randomly) -->
+        <img src="img008-2.jpg" alt="Image 1" class="overlay-image" id="image1">
+        <img src="img004.jpg" alt="Image 2" class="overlay-image" id="image2">
+        <img src="img010-2.jpg" alt="Image 3" class="overlay-image" id="image3">
+        <img src="img002.jpg" alt="Image 4" class="overlay-image" id="image4">
+        <img src="img006.jpg" alt="Image 5" class="overlay-image" id="image5">
+        <img src="img012.jpg" alt="Image 6" class="overlay-image" id="image6">
+        <img src="img018.jpg" alt="Image 7" class="overlay-image" id="image7">
+        <img src="img018-2.jpg" alt="Image 8" class="overlay-image" id="image8">
+        <img src="img019.jpg" alt="Image 9" class="overlay-image" id="image9">
+        <img src="img019-2.jpg" alt="Image 10" class="overlay-image" id="image10">
+        <img src="img010.jpg" alt="Image 11" class="overlay-image" id="image11">
+        <img src="img008.jpg" alt="Image 12" class="overlay-image" id="image12">
+        <img src="img007.jpg" alt="Image 13" class="overlay-image" id="image13">
+        <img src="img024.jpg" alt="Image 14" class="overlay-image" id="image14">
+        <img src="img003.jpg" alt="Image 15" class="overlay-image" id="image15">
     </div>
 
-    <!-- Popup for showing larger image -->
-    <div id="image-popup" class="popup" onclick="closePopup()">
-        <img id="popup-image" src="" alt="Large View">
-    </div>
-
-    <script src="script.js"></script> <!-- Link to the JavaScript file -->
+    <script src="script.js"></script>
 </body>
 </html>
