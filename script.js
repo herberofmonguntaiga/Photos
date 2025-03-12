@@ -71,9 +71,15 @@ document.addEventListener("DOMContentLoaded", function () {
         lightbox.style.display = "flex";
     }
 
-    document.querySelector(".close").addEventListener("click", function () {
-        document.getElementById("lightbox").style.display = "none";
-    });
+    function closeLightbox(event) {
+        const lightbox = document.getElementById("lightbox");
+        if (event.target === lightbox || event.target.classList.contains("close")) {
+            lightbox.style.display = "none";
+        }
+    }
+
+    document.querySelector(".close").addEventListener("click", closeLightbox);
+    document.getElementById("lightbox").addEventListener("click", closeLightbox);
 
     window.addEventListener("resize", placeImages);
     placeImages();
