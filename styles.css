@@ -3,6 +3,7 @@
     position: relative;
     width: 100%;
     height: 100vh; /* Full viewport height */
+    overflow: hidden; /* Prevent images from overflowing */
 }
 
 /* Background image */
@@ -23,4 +24,12 @@
 /* Hover effect for images */
 .overlay-image:hover {
     transform: scale(1.1); /* Slightly enlarge images on hover */
+}
+
+/* Prevent overflow on smaller screens */
+@media (max-width: 600px) {
+    .overlay-image {
+        width: 150px;
+        height: auto;
+    }
 }
