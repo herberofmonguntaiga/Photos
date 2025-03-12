@@ -11,7 +11,7 @@
     object-fit: cover; /* Cover the entire screen */
 }
 
-/* Container for smaller images using grid layout, but without perfect alignment */
+/* Container for smaller images using grid layout */
 .image-container {
     position: absolute;
     top: 0;
@@ -20,22 +20,20 @@
     height: 100%;
     display: grid;
     grid-template-columns: repeat(4, 1fr); /* 4 columns */
-    grid-gap: 10px; /* Space between images (10px) */
-    justify-items: start; /* Align items to the start (left) */
-    align-items: start; /* Align items to the top */
-    padding: 10px;
+    grid-gap: 20px; /* Space between the images */
+    justify-items: center; /* Center the images within their grid cells */
+    align-items: center; /* Center images vertically in each grid cell */
+    padding: 20px;
 }
 
 /* Style for the 16 overlay images */
 .overlay-image {
-    width: 100%;
-    height: auto;
-    max-width: 250px; /* Increase the size of images */
-    max-height: 250px; /* Ensure they are large enough */
-    margin: 0; /* Remove any default margin */
+    width: 100%; /* Make the image take up the full width of the grid cell */
+    height: auto; /* Maintain the original aspect ratio */
+    max-width: 200px; /* You can adjust this width as needed */
     cursor: pointer;
     transition: transform 0.3s ease; /* Smooth hover effect */
-    object-fit: contain; /* Retain original aspect ratio */
+    object-fit: contain; /* Ensure the image's aspect ratio is retained */
 }
 
 /* Hover effect for overlay images */
@@ -62,4 +60,3 @@
     max-height: 90%;
     object-fit: contain;
 }
-
