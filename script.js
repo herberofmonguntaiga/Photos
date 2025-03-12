@@ -86,7 +86,7 @@ function positionImages() {
         imagesPositioned.push(image);
     });
 
-    // Adjust if total image area is too small, but avoid recursion
+    // Adjust if total image area is too small
     if (totalImageArea < targetArea) {
         console.warn('Total image area is too small, trying to adjust');
         positionImages(); // Only call it once for optimization purposes
