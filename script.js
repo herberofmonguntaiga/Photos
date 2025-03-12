@@ -9,8 +9,8 @@ const minWidth = 280; // Minimum width of 280px
 const minHeight = 160; // Minimum height of 160px
 
 // Maximum percentage for image width and height
-const maxWidthPercentage = 0.2; // Max 20% of container width
-const maxHeightPercentage = 0.2; // Max 20% of container height
+const maxWidthPercentage = 0.25; // Max 25% of container width
+const maxHeightPercentage = 0.25; // Max 25% of container height
 
 // Function to get random size for the image, respecting aspect ratio and minimum size
 function getRandomSize() {
@@ -62,53 +62,24 @@ function getRandomPosition(imagesPositioned, imageWidth, imageHeight) {
 // Function to position and size all the images
 function positionImages() {
     const imagesPositioned = [];
+    const container = document.querySelector('.background-container');
+    const containerWidth = container.clientWidth;
+    const containerHeight = container.clientHeight;
+
+    const totalArea = containerWidth * containerHeight;
+    const targetArea = totalArea * 0.8; // 80% of the background
+
+    let totalImageArea = 0;
 
     imageIds.forEach(id => {
         const image = document.getElementById(id);
         const { width, height } = getRandomSize();
+        totalImageArea += width * height;
+
         const { x, y } = getRandomPosition(imagesPositioned, width, height);
 
         image.style.left = `${x}px`;
         image.style.top = `${y}px`;
         image.style.width = `${width}px`;
-        image.style.height = `${height}px`;
-
-        imagesPositioned.push(image);
-    });
-}
-
-// Function to open the clicked image in a larger view
-function openImageModal(imageSrc) {
-    const modal = document.getElementById("imageModal");
-    const modalImage = document.getElementById("modalImage");
-    modal.style.display = "block";
-    modalImage.src = imageSrc;
-}
-
-// Function to close the modal
-function closeModal() {
-    const modal = document.getElementById("imageModal");
-    modal.style.display = "none";
-}
-
-// Event listener for closing the modal
-document.getElementById("closeModal").addEventListener("click", closeModal);
-
-// Event listener to close modal when clicking outside of the image
-document.getElementById("imageModal").addEventListener("click", function(e) {
-    if (e.target === this) { // If the background of the modal is clicked
-        closeModal();
-    }
-});
-
-// Event listeners to open each image in the modal
-imageIds.forEach(id => {
-    const image = document.getElementById(id);
-    image.addEventListener("click", function () {
-        openImageModal(this.src);
-    });
-});
-
-// Call positionImages when the page loads
-window.onload = positionImages;
+        image.style.height =
 
