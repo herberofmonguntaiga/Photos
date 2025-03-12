@@ -1,0 +1,60 @@
+/* Set the background image to fill the screen */
+.background-container {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Full viewport height */
+}
+
+.background-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cover the entire screen */
+}
+
+/* Container for smaller images */
+.image-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap; /* Allows the images to wrap in multiple rows */
+    justify-content: space-around; /* Distribute images evenly */
+    align-items: center; /* Center images vertically */
+}
+
+/* Style for the 16 overlay images */
+.overlay-image {
+    width: 150px; /* Set size for the images (adjust as needed) */
+    height: 150px;
+    margin: 10px; /* Space between the images */
+    cursor: pointer;
+    transition: transform 0.3s ease; /* Smooth hover effect */
+    object-fit: cover; /* Ensure the image covers the area without distortion */
+}
+
+/* Hover effect for overlay images */
+.overlay-image:hover {
+    transform: scale(1.1); /* Slightly enlarge on hover */
+}
+
+/* Popup styling for the large image view */
+.popup {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Dark background */
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+#popup-image {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+}
