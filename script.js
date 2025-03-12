@@ -4,70 +4,75 @@ const imageIds = [
     'image9', 'image10', 'image11', 'image12', 'image13', 'image14', 'image15'
 ];
 
-// Image dimensions (width and height) as specified
-const imageDimensions = {
-    'image1': { width: 454, height: 268.31 },
-    'image2': { width: 439, height: 265.66 },
-    'image3': { width: 370, height: 227.54 },
-    'image4': { width: 476, height: 288.06 },
-    'image5': { width: 283, height: 496.26 },
-    'image6': { width: 423, height: 260.13 },
-    'image7': { width: 445, height: 261.70 },
-    'image8': { width: 392.98, height: 237.81 },
-    'image9': { width: 414.73, height: 236.95 },
-    'image10': { width: 266, height: 434.34 },
-    'image11': { width: 280.09, height: 166.21 },
-    'image12': { width: 522.4, height: 294.94 },
-    'image13': { width: 444.63, height: 262.61 },
-    'image14': { width: 483.29, height: 315.28 },
-    'image15': { width: 410.60, height: 252.10 }
-};
+// Maximum dimensions for the images (in percentage of container width/height)
+const maxWidthPercentage = 0.2; // Max 20% of container width
+const maxHeightPercentage = 0.2; // Max 20% of container height
+
+// Function to get a random size for the image, within reasonable limits
+function getRandomSize() {
+    const container = document.querySelector('.background-container');
+    const containerWidth = container.clientWidth;
+    const containerHeight = container.clientHeight;
+
+    // Get random width and height percentages (maintaining aspect ratio)
+    const width = Math.random() * (containerWidth * maxWidthPercentage);
+    const height = width * (Math.random() * 0.8 + 0.5); // Aspect ratio between 0.5 and 0.8
+    
+    return { width, height };
+}
 
 // Function to get a random position for the image
-function getRandomPosition(imageId) {
+function getRandomPosition(imageId, imagesPositioned) {
     const container = document.querySelector('.background-container');
     const containerWidth = container.clientWidth;
     const containerHeight = container.clientHeight;
     
-    const imageWidth = imageDimensions[imageId].width;
-    const imageHeight = imageDimensions[imageId].height;
-
-    // Generate random x and y positions with margin for spacing
-    const x = Math.random() * (containerWidth - imageWidth - 20) + 10;
-    const y = Math.random() * (containerHeight - imageHeight - 20) + 10;
+    const { width, height } = getRandomSize();
     
-    return { x, y };
+    let x, y, overlap;
+
+    // Ensure no overlap with other images
+    do {
+        x = Math.random() * (containerWidth - width - 20) + 10; // 10px margin
+        y = Math.random() * (containerHeight - height - 20) + 10; // 10px margin
+        overlap = false;
+        
+        // Check if this position overlaps with any other image
+        for (let i = 0; i < imagesPositioned.length; i++) {
+            const img = imagesPositioned[i];
+            const imgRect = img.getBoundingClientRect();
+            if (
+                x < imgRect.left + imgRect.width + 10 &&
+                x + width > imgRect.left - 10 &&
+                y < imgRect.top + imgRect.height + 10 &&
+                y + height > imgRect.top - 10
+            ) {
+                overlap = true;
+                break;
+            }
+        }
+    } while (overlap); // Keep trying until there's no overlap
+
+    return { x, y, width, height };
 }
 
-// Function to randomly position each image
+// Function to randomly position and size each image
 function positionImages() {
+    const imagesPositioned = [];
+
     imageIds.forEach(id => {
         const image = document.getElementById(id);
-        const { x, y } = getRandomPosition(id);
+        const { x, y, width, height } = getRandomPosition(id, imagesPositioned);
+        
         image.style.left = `${x}px`;
         image.style.top = `${y}px`;
+        image.style.width = `${width}px`;
+        image.style.height = `${height}px`;
 
-        // Add click functionality to each image to open in modal
-        image.onclick = function() {
-            openModal(image.src);
-        };
+        // Store the positioned image for overlap checking
+        imagesPositioned.push(image);
     });
-}
-
-// Function to open the modal with the clicked image
-function openModal(imageSrc) {
-    const modal = document.getElementById("imageModal");
-    const modalImage = document.getElementById("modalImage");
-    modal.style.display = "block";
-    modalImage.src = imageSrc;
-}
-
-// Function to close the modal
-function closeModal() {
-    const modal = document.getElementById("imageModal");
-    modal.style.display = "none";
 }
 
 // Call positionImages when the page loads
 window.onload = positionImages;
-
