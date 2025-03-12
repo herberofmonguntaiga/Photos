@@ -2,7 +2,7 @@
 function openImage(imageSrc) {
     const popup = document.getElementById("image-popup");
     const popupImage = document.getElementById("popup-image");
-    popupImage.src = imageSrc;
+    popupImage.src = imageSrc; // Set the source of the popup image to the clicked image's source
     popup.style.display = "flex"; // Show the popup
 }
 
