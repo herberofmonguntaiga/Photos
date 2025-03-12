@@ -17,7 +17,7 @@ const imageDimensions = {
     'image9': { width: 414.73, height: 236.95 },
     'image10': { width: 266, height: 434.34 },
     'image11': { width: 280.09, height: 166.21 },
-    'image12': { width: 522.40, height: 294.94 },
+    'image12': { width: 522.4, height: 294.94 },
     'image13': { width: 444.63, height: 262.61 },
     'image14': { width: 483.29, height: 315.28 },
     'image15': { width: 410.60, height: 252.10 }
@@ -32,7 +32,7 @@ function getRandomPosition(imageId) {
     const imageWidth = imageDimensions[imageId].width;
     const imageHeight = imageDimensions[imageId].height;
 
-    // Ensure images are placed with a 10px margin and don't overflow
+    // Generate random x and y positions with margin for spacing
     const x = Math.random() * (containerWidth - imageWidth - 20) + 10;
     const y = Math.random() * (containerHeight - imageHeight - 20) + 10;
     
@@ -46,7 +46,26 @@ function positionImages() {
         const { x, y } = getRandomPosition(id);
         image.style.left = `${x}px`;
         image.style.top = `${y}px`;
+
+        // Add click functionality to each image to open in modal
+        image.onclick = function() {
+            openModal(image.src);
+        };
     });
+}
+
+// Function to open the modal with the clicked image
+function openModal(imageSrc) {
+    const modal = document.getElementById("imageModal");
+    const modalImage = document.getElementById("modalImage");
+    modal.style.display = "block";
+    modalImage.src = imageSrc;
+}
+
+// Function to close the modal
+function closeModal() {
+    const modal = document.getElementById("imageModal");
+    modal.style.display = "none";
 }
 
 // Call positionImages when the page loads
