@@ -81,5 +81,48 @@ function positionImages() {
         image.style.left = `${x}px`;
         image.style.top = `${y}px`;
         image.style.width = `${width}px`;
-        image.style.height =
+        image.style.height = `${height}px`;
 
+        imagesPositioned.push(image);
+    });
+
+    // Ensure total image area is around 80% of the background area
+    if (totalImageArea < targetArea) {
+        positionImages(); // Recalculate if the total image area is too small
+    }
+}
+
+// Function to open the clicked image in a larger view
+function openImageModal(imageSrc) {
+    const modal = document.getElementById("imageModal");
+    const modalImage = document.getElementById("modalImage");
+    modal.style.display = "block";
+    modalImage.src = imageSrc;
+}
+
+// Function to close the modal
+function closeModal() {
+    const modal = document.getElementById("imageModal");
+    modal.style.display = "none";
+}
+
+// Event listener for closing the modal
+document.getElementById("closeModal").addEventListener("click", closeModal);
+
+// Event listeners to open each image in the modal
+imageIds.forEach(id => {
+    const image = document.getElementById(id);
+    image.addEventListener("click", function () {
+        openImageModal(this.src);
+    });
+});
+
+// Event listener to close the modal by clicking anywhere in the modal background
+document.getElementById("imageModal").addEventListener("click", function (event) {
+    if (event.target === this) { // Only close if clicking on the background (not the image)
+        closeModal();
+    }
+});
+
+// Call positionImages when the page loads
+window.onload = positionImages;
