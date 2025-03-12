@@ -4,77 +4,75 @@ const imageIds = [
     'image9', 'image10', 'image11', 'image12', 'image13', 'image14', 'image15'
 ];
 
-// Maximum dimensions for the images (in percentage of container width/height)
+// Minimum size for images
+const minWidth = 280; // Minimum width of 280px
+const minHeight = 160; // Minimum height of 160px
+
+// Maximum percentage for image width and height
 const maxWidthPercentage = 0.2; // Max 20% of container width
 const maxHeightPercentage = 0.2; // Max 20% of container height
 
-// Minimum image width
-const minWidth = 280;
-
-// Function to get a random size for the image, within reasonable limits
+// Function to get random size for the image, respecting aspect ratio and minimum size
 function getRandomSize() {
     const container = document.querySelector('.background-container');
     const containerWidth = container.clientWidth;
     const containerHeight = container.clientHeight;
 
-    // Get random width and height percentages (maintaining aspect ratio)
     let width = Math.random() * (containerWidth * maxWidthPercentage);
-    width = Math.max(width, minWidth); // Enforce the minimum width
+    width = Math.max(width, minWidth); // Enforce minimum width
+    let height = width * (Math.random() * 0.8 + 0.5); // Random aspect ratio between 0.5 and 0.8
 
-    const height = width * (Math.random() * 0.8 + 0.5); // Aspect ratio between 0.5 and 0.8
-    
+    height = Math.max(height, minHeight); // Enforce minimum height
+
     return { width, height };
 }
 
-// Function to get a random position for the image
-function getRandomPosition(imageId, imagesPositioned) {
+// Function to get random position while avoiding overlap
+function getRandomPosition(imagesPositioned, imageWidth, imageHeight) {
     const container = document.querySelector('.background-container');
     const containerWidth = container.clientWidth;
     const containerHeight = container.clientHeight;
     
-    const { width, height } = getRandomSize();
-    
     let x, y, overlap;
 
-    // Ensure no overlap with other images
     do {
-        x = Math.random() * (containerWidth - width - 20) + 10; // 10px margin
-        y = Math.random() * (containerHeight - height - 20) + 10; // 10px margin
+        x = Math.random() * (containerWidth - imageWidth - 20) + 10; // Ensure 10px margin
+        y = Math.random() * (containerHeight - imageHeight - 20) + 10; // Ensure 10px margin
         overlap = false;
-        
+
         // Check if this position overlaps with any other image
         for (let i = 0; i < imagesPositioned.length; i++) {
             const img = imagesPositioned[i];
             const imgRect = img.getBoundingClientRect();
             if (
                 x < imgRect.left + imgRect.width + 10 &&
-                x + width > imgRect.left - 10 &&
+                x + imageWidth > imgRect.left - 10 &&
                 y < imgRect.top + imgRect.height + 10 &&
-                y + height > imgRect.top - 10
+                y + imageHeight > imgRect.top - 10
             ) {
                 overlap = true;
                 break;
             }
         }
-    } while (overlap); // Keep trying until there's no overlap
+    } while (overlap); // Retry if there's overlap
 
-    return { x, y, width, height };
+    return { x, y };
 }
 
-// Function to randomly position and size each image
+// Function to position and size all the images
 function positionImages() {
     const imagesPositioned = [];
 
     imageIds.forEach(id => {
         const image = document.getElementById(id);
-        const { x, y, width, height } = getRandomPosition(id, imagesPositioned);
-        
+        const { width, height } = getRandomSize();
+        const { x, y } = getRandomPosition(imagesPositioned, width, height);
+
         image.style.left = `${x}px`;
         image.style.top = `${y}px`;
         image.style.width = `${width}px`;
         image.style.height = `${height}px`;
 
-        // Store the positioned image for overlap checking
         imagesPositioned.push(image);
     });
 }
