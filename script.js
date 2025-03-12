@@ -94,6 +94,13 @@ function closeModal() {
 // Event listener for closing the modal
 document.getElementById("closeModal").addEventListener("click", closeModal);
 
+// Event listener to close modal when clicking outside of the image
+document.getElementById("imageModal").addEventListener("click", function(e) {
+    if (e.target === this) { // If the background of the modal is clicked
+        closeModal();
+    }
+});
+
 // Event listeners to open each image in the modal
 imageIds.forEach(id => {
     const image = document.getElementById(id);
@@ -104,3 +111,4 @@ imageIds.forEach(id => {
 
 // Call positionImages when the page loads
 window.onload = positionImages;
+
