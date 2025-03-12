@@ -9,7 +9,7 @@
 .background-image {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Makes sure the background image covers the whole screen */
+    object-fit: cover; /* Ensures the background image covers the container */
 }
 
 /* Style for the smaller overlay images */
@@ -45,85 +45,111 @@
     object-fit: contain;
 }
 
-/* Position the images manually with viewport units (vh/vw) for responsiveness */
+/* Positioning for each image using the provided coordinates and dimensions */
+
 #image1 {
-    top: 5vh;
-    left: 5vw;
+    top: calc(450px - 134px); /* Center the image */
+    left: calc(320px - 227px); /* Center the image */
+    width: 454px;
+    height: 268px;
 }
 
 #image2 {
-    top: 10vh;
-    left: 25vw;
+    top: calc(595px - 132.83px);
+    left: calc(300px - 219.83px);
+    width: 439px;
+    height: 265.66px;
 }
 
 #image3 {
-    top: 20vh;
-    left: 40vw;
+    top: calc(903px - 113.77px);
+    left: calc(313px - 185px);
+    width: 370px;
+    height: 227.54px;
 }
 
 #image4 {
-    top: 40vh;
-    left: 10vw;
+    top: calc(1226px - 144.03px);
+    left: calc(289px - 238px);
+    width: 476px;
+    height: 288.06px;
 }
 
 #image5 {
-    top: 20vh;
-    left: 60vw;
+    top: calc(370px - 248.13px);
+    left: calc(738px - 141.5px);
+    width: 283px;
+    height: 496.26px;
 }
 
 #image6 {
-    top: 60vh;
-    left: 20vw;
+    top: calc(815px - 130.06px);
+    left: calc(778px - 211.5px);
+    width: 423px;
+    height: 260.13px;
 }
 
 #image7 {
-    top: 30vh;
-    left: 70vw;
+    top: calc(1150px - 132.85px);
+    left: calc(762px - 222.5px);
+    width: 445px;
+    height: 261.70px;
 }
 
 #image8 {
-    top: 50vh;
-    left: 30vw;
+    top: calc(259px - 118.90px);
+    left: calc(1120px - 196.49px);
+    width: 392.98px;
+    height: 237.81px;
 }
 
 #image9 {
-    top: 80vh;
-    left: 40vw;
+    top: calc(539px - 118.475px);
+    left: calc(1167px - 207.36px);
+    width: 414.73px;
+    height: 236.95px;
 }
 
 #image10 {
-    top: 10vh;
-    left: 70vw;
+    top: calc(917px - 217.17px);
+    left: calc(1187px - 133px);
+    width: 266px;
+    height: 434.34px;
 }
 
 #image11 {
-    top: 70vh;
-    left: 50vw;
+    top: calc(1293px - 83.11px);
+    left: calc(1150px - 140.04px);
+    width: 280.09px;
+    height: 166.21px;
 }
 
 #image12 {
-    top: 40vh;
-    left: 50vw;
+    top: calc(211px - 147.47px);
+    left: calc(1611px - 261.2px);
+    width: 522.4px;
+    height: 294.94px;
 }
 
 #image13 {
-    top: 30vh;
-    left: 10vw;
+    top: calc(568.5px - 131.31px);
+    left: calc(1160px - 222.32px);
+    width: 444.63px;
+    height: 262.61px;
 }
 
 #image14 {
-    top: 50vh;
-    left: 80vw;
+    top: calc(922px - 157.64px);
+    left: calc(1612px - 241.64px);
+    width: 483.29px;
+    height: 315.28px;
 }
 
 #image15 {
-    top: 60vh;
-    left: 5vw;
-}
-
-#image16 {
-    top: 90vh;
-    left: 70vw;
+    top: calc(1253.5px - 126.05px);
+    left: calc(1560px - 205.3px);
+    width: 410.60px;
+    height: 252.10px;
 }
 
 /* For smaller screens (e.g., mobile devices) */
@@ -133,50 +159,5 @@
         max-height: 100px;
     }
 
-    #image1 {
-        top: 10vh;
-        left: 10vw;
-    }
-
-    #image2 {
-        top: 20vh;
-        left: 20vw;
-    }
-
-    #image3 {
-        top: 30vh;
-        left: 10vw;
-    }
-
-    #image4 {
-        top: 40vh;
-        left: 60vw;
-    }
-
-    /* Adjust positions for the rest of the images similarly... */
-}
-
-/* For larger screens (tablets, desktops) */
-@media (min-width: 600px) {
-    .overlay-image {
-        max-width: 200px; /* Larger image size for tablets and desktops */
-        max-height: 200px;
-    }
-
-    #image1 {
-        top: 5vh;
-        left: 5vw;
-    }
-
-    #image2 {
-        top: 10vh;
-        left: 25vw;
-    }
-
-    #image3 {
-        top: 20vh;
-        left: 40vw;
-    }
-
-    /* Continue positioning for larger screens */
+    /* You can also adjust individual positions for mobile if needed */
 }
