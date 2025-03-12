@@ -11,25 +11,23 @@
         <!-- Background Image -->
         <img src="backgroundforportfolio.jpg" alt="Background Image" class="background-image">
 
-        <!-- 16 smaller images that act as buttons -->
-        <div class="image-container">
-            <img src="img002.jpg" alt="Image 1" class="overlay-image" onclick="openImage('img002.jpg')">
-            <img src="img003.jpg" alt="Image 2" class="overlay-image" onclick="openImage('img003.jpg')">
-            <img src="img004.jpg" alt="Image 3" class="overlay-image" onclick="openImage('img004.jpg')">
-            <img src="img006.jpg" alt="Image 4" class="overlay-image" onclick="openImage('img006.jpg')">
-            <img src="img007.jpg" alt="Image 5" class="overlay-image" onclick="openImage('img007.jpg')">
-            <img src="img008-2.jpg" alt="Image 6" class="overlay-image" onclick="openImage('img008-2.jpg')">
-            <img src="img008.jpg" alt="Image 7" class="overlay-image" onclick="openImage('img008.jpg')">
-            <img src="img010-2.jpg" alt="Image 8" class="overlay-image" onclick="openImage('img010-2.jpg')">
-            <img src="img010.jpg" alt="Image 9" class="overlay-image" onclick="openImage('img010.jpg')">
-            <img src="img012.jpg" alt="Image 10" class="overlay-image" onclick="openImage('img012.jpg')">
-            <img src="img016.jpg" alt="Image 11" class="overlay-image" onclick="openImage('img016.jpg')">
-            <img src="img018-2.jpg" alt="Image 12" class="overlay-image" onclick="openImage('img018-2.jpg')">
-            <img src="img018.jpg" alt="Image 13" class="overlay-image" onclick="openImage('img018.jpg')">
-            <img src="img019-2.jpg" alt="Image 14" class="overlay-image" onclick="openImage('img019-2.jpg')">
-            <img src="img019.jpg" alt="Image 15" class="overlay-image" onclick="openImage('img019.jpg')">
-            <img src="img024.jpg" alt="Image 16" class="overlay-image" onclick="openImage('img024.jpg')">
-        </div>
+        <!-- 16 smaller images (use absolute positioning to place them manually) -->
+        <img src="img002.jpg" alt="Image 1" class="overlay-image" id="image1" onclick="openImage(this.src)">
+        <img src="img003.jpg" alt="Image 2" class="overlay-image" id="image2" onclick="openImage(this.src)">
+        <img src="img004.jpg" alt="Image 3" class="overlay-image" id="image3" onclick="openImage(this.src)">
+        <img src="img006.jpg" alt="Image 4" class="overlay-image" id="image4" onclick="openImage(this.src)">
+        <img src="img007.jpg" alt="Image 5" class="overlay-image" id="image5" onclick="openImage(this.src)">
+        <img src="img008-2.jpg" alt="Image 6" class="overlay-image" id="image6" onclick="openImage(this.src)">
+        <img src="img008.jpg" alt="Image 7" class="overlay-image" id="image7" onclick="openImage(this.src)">
+        <img src="img010-2.jpg" alt="Image 8" class="overlay-image" id="image8" onclick="openImage(this.src)">
+        <img src="img010.jpg" alt="Image 9" class="overlay-image" id="image9" onclick="openImage(this.src)">
+        <img src="img012.jpg" alt="Image 10" class="overlay-image" id="image10" onclick="openImage(this.src)">
+        <img src="img016.jpg" alt="Image 11" class="overlay-image" id="image11" onclick="openImage(this.src)">
+        <img src="img018-2.jpg" alt="Image 12" class="overlay-image" id="image12" onclick="openImage(this.src)">
+        <img src="img018.jpg" alt="Image 13" class="overlay-image" id="image13" onclick="openImage(this.src)">
+        <img src="img019-2.jpg" alt="Image 14" class="overlay-image" id="image14" onclick="openImage(this.src)">
+        <img src="img019.jpg" alt="Image 15" class="overlay-image" id="image15" onclick="openImage(this.src)">
+        <img src="img024.jpg" alt="Image 16" class="overlay-image" id="image16" onclick="openImage(this.src)">
     </div>
 
     <!-- Popup for showing larger image -->
@@ -40,4 +38,3 @@
     <script src="script.js"></script> <!-- Link to the JavaScript file -->
 </body>
 </html>
-
