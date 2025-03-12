@@ -8,6 +8,9 @@ const imageIds = [
 const maxWidthPercentage = 0.2; // Max 20% of container width
 const maxHeightPercentage = 0.2; // Max 20% of container height
 
+// Minimum image width
+const minWidth = 280;
+
 // Function to get a random size for the image, within reasonable limits
 function getRandomSize() {
     const container = document.querySelector('.background-container');
@@ -15,7 +18,9 @@ function getRandomSize() {
     const containerHeight = container.clientHeight;
 
     // Get random width and height percentages (maintaining aspect ratio)
-    const width = Math.random() * (containerWidth * maxWidthPercentage);
+    let width = Math.random() * (containerWidth * maxWidthPercentage);
+    width = Math.max(width, minWidth); // Enforce the minimum width
+
     const height = width * (Math.random() * 0.8 + 0.5); // Aspect ratio between 0.5 and 0.8
     
     return { width, height };
@@ -73,6 +78,31 @@ function positionImages() {
         imagesPositioned.push(image);
     });
 }
+
+// Function to open the clicked image in a larger view
+function openImageModal(imageSrc) {
+    const modal = document.getElementById("imageModal");
+    const modalImage = document.getElementById("modalImage");
+    modal.style.display = "block";
+    modalImage.src = imageSrc;
+}
+
+// Function to close the modal
+function closeModal() {
+    const modal = document.getElementById("imageModal");
+    modal.style.display = "none";
+}
+
+// Event listener for closing the modal
+document.getElementById("closeModal").addEventListener("click", closeModal);
+
+// Event listeners to open each image in the modal
+imageIds.forEach(id => {
+    const image = document.getElementById(id);
+    image.addEventListener("click", function () {
+        openImageModal(this.src);
+    });
+});
 
 // Call positionImages when the page loads
 window.onload = positionImages;
